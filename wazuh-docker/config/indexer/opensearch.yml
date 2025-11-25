@@ -1,0 +1,12 @@
+cluster.name: wazuh-cluster
+node.name: wazuh-indexer
+network.host: 0.0.0.0
+http.port: 9200
+transport.port: 9300
+discovery.seed_hosts: ["wazuh-indexer"]
+cluster.initial_master_nodes: ["wazuh-indexer"]
+path.data: /var/lib/opensearch
+path.logs: /var/log/opensearch
+plugins.security.disabled: true
+index.number_of_shards: 1
+index.number_of_replicas: 0

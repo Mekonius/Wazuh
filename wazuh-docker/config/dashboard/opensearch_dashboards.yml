@@ -1,0 +1,25 @@
+# Contents of /wazuh-docker/wazuh-docker/config/dashboard/opensearch_dashboards.yml
+
+server:
+  port: 5601
+  host: "0.0.0.0"
+
+elasticsearch:
+  hosts: ["https://wazuh-indexer:9200"]
+  username: "your_username"  # Replace with your username
+  password: "your_password"  # Replace with your password
+
+logging:
+  appenders:
+    file:
+      type: file
+      fileName: /var/log/opensearch-dashboards.log
+      layout:
+        type: json
+
+  loggers:
+    default:
+      level: info
+      appender: file
+
+# Additional configuration options can be added as needed.
