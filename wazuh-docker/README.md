@@ -39,10 +39,18 @@ wazuh-docker
 4. **Start the Services**: Use Docker Compose to start the Wazuh services.
 
    ```bash
-   docker-compose up -d
+   docker compose up -d
    ```
 
 5. **Access the Dashboard**: Once the services are running, you can access the Wazuh Dashboard at `https://localhost`.
+
+6. **Check Agents**: To see which agents the manager knows about:
+
+   ```bash
+   docker exec -it wazuh-manager /var/ossec/bin/agent_control -l
+   ```
+
+   You should see an entry similar to `wazuh-agent` once the Docker agent is connected.
 
 ## Usage
 
@@ -57,5 +65,17 @@ wazuh-docker
 - Ensure that Docker and Docker Compose are installed on your machine.
 - For SSL/TLS support, place your certificates in the `certs` directory.
 - The `scripts/setup.sh` file can be used for additional setup tasks after the containers are up.
+- The `manage-wazuh.sh` helper script can be used to start/stop the stack, check status, and repair the Docker agent configuration.
+
+   Basic usage from the `wazuh-docker` folder:
+
+   ```bash
+   chmod +x manage-wazuh.sh
+
+   ./manage-wazuh.sh up        # start indexer, manager, dashboard, agent
+   ./manage-wazuh.sh status    # show containers and registered agents
+   ./manage-wazuh.sh fix-agent # patch agent ossec.conf inside container
+   ./manage-wazuh.sh down      # stop stack
+   ```
 
 This README provides a comprehensive overview of the Wazuh Docker project, making it easier for users to understand and utilize the setup effectively.
