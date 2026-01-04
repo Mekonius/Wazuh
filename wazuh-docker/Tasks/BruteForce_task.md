@@ -189,16 +189,6 @@ Eleven skal kunne svare på:
 
 ---
 
-# ✅ Afleveringskrav
-
-Du skal kunne demonstrere **mindst 2 af demoerne** og forklare:
-- API-kaldet
-- logfilen
-- Wazuh event
-- relevante netværksbegreber
-
----
-
 ## 🎓 Husk
 
 > *Et angreb er bare data og adfærd – logs er beviset.*
