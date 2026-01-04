@@ -1,4 +1,20 @@
-# 🧪 Øvelser – Brute force Attack
+# 🧪 Øvelser – Angrebs-demoer med Wazuh
+
+## 🎓 HF5 / Svendeprøve-niveau – Faglig forventning
+
+Disse øvelser forventes forklaret med **professionelt fagsprog** som anvendes i drift, DevOps og sikkerhed.
+
+Eleven skal kunne anvende og forklare begreber som:
+- authentication vs authorization
+- request / response lifecycle
+- reverse proxy
+- attack surface
+- log ingestion og alerting
+- availability og integrity (CIA triad)
+- mitigation og prevention
+
+Forklaringer skal være **årsagsbaserede** (why), ikke kun handlingsbaserede (how).
+
 
 Disse øvelser viser, hvordan **mistænkelig adfærd og angreb** kan opdages via logs og Wazuh.
 
