@@ -1,6 +1,6 @@
-# 🧪 Øvelser – Angrebs-demoer med Wazuh
+#  Øvelser – Angrebs-demoer med Wazuh
 
-## 🎓 HF5 / Svendeprøve-niveau – Faglig forventning
+##  HF5 / Svendeprøve-niveau – Faglig forventning
 
 Disse øvelser forventes forklaret med **professionelt fagsprog** som anvendes i drift, DevOps og sikkerhed.
 
@@ -20,11 +20,11 @@ Disse øvelser viser, hvordan **mistænkelig adfærd og angreb** kan opdages via
 
 Formålet er **forståelse**, ikke hacking.
 
-> 👉 I simulerer *kontrollerede angreb* mod jeres **eget API**.
+>  I simulerer *kontrollerede angreb* mod jeres **eget API**.
 
 ---
 
-## 🎯 Overordnet læringsmål
+##  Overordnet læringsmål
 
 Efter øvelserne skal du kunne forklare:
 - hvordan et angreb ser ud i logs
@@ -33,14 +33,14 @@ Efter øvelserne skal du kunne forklare:
 
 ---
 
-# 🔥 Demo 1: Invalid API key (auth failure)
+#  Demo 1: Invalid API key (auth failure)
 
-### 🧠 Hvad simulerer vi?
+###  Hvad simulerer vi?
 En klient prøver at tilgå API’et uden korrekt adgang.
 
 ---
 
-### 1️⃣ Forudsætning i API
+### 1️ Forudsætning i API
 Dit API skal tjekke API-key i en header, fx:
 ```http
 X-API-Key: secret_key
@@ -57,7 +57,7 @@ logging.warning("Invalid API key from %s", request.remote_addr)
 
 ---
 
-### 2️⃣ Simulér angrebet
+### 2️ Simulér angrebet
 
 Kør fra terminal eller Postman:
 ```bash
@@ -69,7 +69,7 @@ Gentag 3–5 gange.
 
 ---
 
-### 3️⃣ Se hvad der sker
+### 3️ Se hvad der sker
 
 **På serveren**
 ```bash
@@ -83,19 +83,19 @@ cat /var/log/api.log
 
 ---
 
-### 4️⃣ Forklaring (det du skal kunne sige)
+### 4️ Forklaring (det du skal kunne sige)
 > *“En klient fra denne IP sender requests uden korrekt API-key. API’et afviser og logger det, og Wazuh opdager hændelsen.”*
 
 ---
 
-# 🔥 Demo 2: Brute force mod API
+#  Demo 2: Brute force mod API
 
-### 🧠 Hvad simulerer vi?
+###  Hvad simulerer vi?
 En klient prøver mange gange på kort tid.
 
 ---
 
-### 1️⃣ Simulér brute force
+### 1️ Simulér brute force
 
 ```bash
 for i in {1..20}; do
@@ -106,7 +106,7 @@ done
 
 ---
 
-### 2️⃣ Hvad skal I observere?
+### 2️ Hvad skal I observere?
 
 - Mange requests fra samme IP
 - Mange warnings i logfilen
@@ -114,33 +114,33 @@ done
 
 ---
 
-### 3️⃣ Forklaring
+### 3️ Forklaring
 > *“Mange fejl fra samme IP på kort tid kan indikere brute force. Det opdages via logs og overvågning.”*
 
 ---
 
-# 🔥 Demo 3: Service manipulation (drift-angreb)
+#  Demo 3: Service manipulation (drift-angreb)
 
-### 🧠 Hvad simulerer vi?
+###  Hvad simulerer vi?
 At et vigtigt system stopper.
 
 ---
 
-### 1️⃣ Stop API-service
+### 1️ Stop API-service
 ```bash
 sudo systemctl stop api.service
 ```
 
 Vent 30 sekunder.
 
-### 2️⃣ Start igen
+### 2️ Start igen
 ```bash
 sudo systemctl start api.service
 ```
 
 ---
 
-### 3️⃣ Observation
+### 3️ Observation
 
 I Wazuh:
 - Service stopped
@@ -148,24 +148,23 @@ I Wazuh:
 
 ---
 
-### 4️⃣ Forklaring
+### 4️ Forklaring
 > *“Overvågning opdager når kritiske services stopper, hvilket kan skyldes fejl eller angreb.”*
 
 ---
 
-# 🔥 Demo 4: Netværksstøj (port scan – valgfri)
+#  Demo 4: Netværksstøj (port scan – valgfri)
 
-> ⚠️ Kun hvis tiden og niveauet er til det
+>  Kun hvis tiden og niveauet er til det
 
-### 1️⃣ Simulér port scan
+### 1️ Simulér port scan
 ```bash
 sudo apt install nmap -y
 nmap DIT_VM_IP
 ```
 
 ---
-
-### 2️⃣ Observation
+###  Observation
 
 I Wazuh:
 - Network scan detection
@@ -173,12 +172,12 @@ I Wazuh:
 
 ---
 
-### 3️⃣ Forklaring
+###  Forklaring
 > *“Port scanning bruges til at finde åbne services. Overvågning kan opdage denne adfærd.”*
 
 ---
 
-# 🗣️ Fremlæggelsesspørgsmål (brug disse)
+# Fremlæggelsesspørgsmål (brug disse)
 
 Eleven skal kunne svare på:
 - Hvad gjorde klienten?
@@ -189,7 +188,7 @@ Eleven skal kunne svare på:
 
 ---
 
-## 🎓 Husk
+## Husk
 
 > *Et angreb er bare data og adfærd – logs er beviset.*
 
